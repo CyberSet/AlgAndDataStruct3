@@ -10,6 +10,10 @@ public:
         top = nullptr;
     }
 
+    ~stack() {
+        clear();
+    }
+
     Node* getTop() {
         return top->value;
     }

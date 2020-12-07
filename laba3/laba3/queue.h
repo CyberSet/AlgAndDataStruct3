@@ -11,6 +11,10 @@ public:
         end = nullptr;
     }
 
+    ~queue() {
+        clear();
+    }
+
     Node* front() {
         return begin->value;
     }

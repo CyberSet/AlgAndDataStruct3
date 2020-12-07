@@ -19,6 +19,11 @@ public:
         }
     }
 
+    ~bft_iterator() {
+        delete cur;
+        nodesQueue.clear();
+    }
+
     int next() override {
         if (nodesQueue.getSize() > 0) {
             cur = nodesQueue.front();
@@ -44,7 +49,7 @@ class dft_iterator : public Iterator {
 private:
     Node* cur;
     stack nodesStack;
-    bool bl = true;
+    bool flag = true;
 public:
     dft_iterator(Node* root) {
         cur = root;
@@ -56,9 +61,14 @@ public:
         }
     }
 
+    ~dft_iterator() {
+        delete cur;
+        nodesStack.clear();
+    }
+
     int next() override {
-        if (bl) {
-            bl = false;
+        if (flag) {
+            flag = false;
             Node* temp = nodesStack.getTop();
             nodesStack.pop();
             return temp->inf;
@@ -87,6 +97,10 @@ private:
 public:
     BST() {
         root = nullptr;
+    }
+
+    ~BST() {
+        clear(root);
     }
 
     bool contains(const int& value) {
@@ -169,6 +183,14 @@ public:
                         cur->right = nullptr;
                     }
                 }
+        }
+    }
+
+    void clear(Node* toDelete) {
+        if (toDelete != nullptr) {
+            clear(toDelete->left);
+            clear(toDelete->right);
+            delete toDelete;
         }
     }
 

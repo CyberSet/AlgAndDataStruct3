@@ -15,4 +15,6 @@ public:
         left = node_left;
         right = node_right;
     }
+
+    ~Node() {}
 };

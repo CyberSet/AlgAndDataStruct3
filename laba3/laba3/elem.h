@@ -8,4 +8,8 @@ public:
         value = elem_value;
         next = elem_next;
     }
+
+    ~Elem() {
+        delete value;
+    }
 };

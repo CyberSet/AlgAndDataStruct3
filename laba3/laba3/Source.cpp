@@ -14,6 +14,7 @@ int main() {
 	}
 	bst.remove(1);
 	cout << bst.contains(1);
-
+	BST* ptr = &bst;
+	delete ptr;
 	return 0;
 }
